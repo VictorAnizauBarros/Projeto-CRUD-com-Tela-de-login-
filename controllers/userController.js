@@ -108,8 +108,6 @@ exports.signupUser = (req, res) => {
     bcrypt.hash(password, 10, (err, hashedPassword) => {
       if (err) throw err;
 
-      console.log('Senha antes de ser salva (hash):', hashedPassword);  // Verifique o hash gerado
-
       const newUser = {
         name,
         email,
