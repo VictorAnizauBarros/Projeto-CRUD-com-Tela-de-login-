@@ -28,6 +28,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">NOME</th>
                         <th scope="col">EMAIL</th>
+                        <th scope="col">FONE</th>
+                        <th scope="col">ENDEREÇO</th>
                         <th scope="col">AÇÃO</th>
                     </tr>
 
@@ -43,6 +45,12 @@
                             </td>
                             <td>
                                 <%= user.email %>
+                            </td>
+                            <td>
+                                <%= user.fone %>
+                            </td>
+                            <td>
+                                <%= user.endereco %>
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="/edit/<%= user.id %>">Editar</a>

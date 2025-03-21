@@ -34,6 +34,8 @@ exports.addUser = (req, res) => {
   const newUser = {
     name: req.body.name,
     email: req.body.email,
+    fone: req.body.fone, 
+    endereco: req.body.endereco
   };
   User.addUser(newUser, () => {
     res.redirect("/");
@@ -45,6 +47,8 @@ exports.updateUser = (req, res) => {
   const updatedUser = {
     name: req.body.name,
     email: req.body.email,
+    fone: req.body.fone, 
+    endereco: req.body.endereco
   };
   User.updateUser(userId, updatedUser, () => {
     res.redirect("/");
@@ -61,6 +65,7 @@ exports.deleteUser = (req, res) => {
 exports.showLoginPage = (req, res) => {
   res.render('login', { error: req.query.error });
 };
+
 exports.loginUser = (req, res) => {
   const { email, password } = req.body;
 
@@ -98,7 +103,7 @@ exports.showSignupPage = (req, res) => {
 
 // Processar o cadastro de um novo usuário
 exports.signupUser = (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, fone, endereco } = req.body;
 
   User.getUserByEmail(email, (user) => {
     if (user) {
@@ -111,7 +116,9 @@ exports.signupUser = (req, res) => {
       const newUser = {
         name,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        fone,
+        endereco
       };
 
       User.addUser(newUser, () => {
